@@ -1,5 +1,6 @@
 #R script created on November, 5th, 2021
-# This script takes the 10x data and save as a seurat object
+# This script takes the seurat object created on the previous step, reduce it for the desired stages and run the basic seurat pipeline. 
+# As an output you will have a new Seurat object as well as a single cell object.
 # Work from your 'Script' dir
 
 #Load libraries
@@ -10,7 +11,6 @@ suppressMessages(require(useful))
 suppressMessages(require(scater))
 suppressMessages(require(dplyr))
 suppressMessages(require(cowplot))
-#TODO: delte it setwd("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x")
 
 options(stringsAsFactors = FALSE)
 
@@ -103,7 +103,10 @@ seurat_object <- seurat_object %>%
     identity()
 
 #Save seurat object
-saveRDS(seurat_object, file = "Seurat_processed/Meiosis_SeuratObj.rds")
+seurat_object <- readRDS("../E-MTAB-6946_10x/Raw/prep_10x/SeuratObj_red")
+dir.create("../E-MTAB-6946_10x/Processed")
+
+saveRDS(seurat_object, file = "../E-MTAB-6946_10x/Processed/Meiosis_SeuratObj.rds")
 
 #Save expression as a single cell object
 my_order = c("Spermatogonia", "eP1", "eP2", "mP", "lP1", "lP2", "D", "MI", "MII", "S1", "S2", "Fetal_Leydig_1", "Fetal_Leydig_2", "Leydig_1", "Leydig_2", "Sertoli", "Endothelial_cells", "PTM", "Interstitial_tMg")
@@ -112,6 +115,6 @@ my_order = c("Spermatogonia", "eP1", "eP2", "mP", "lP1", "lP2", "D", "MI", "MII"
 seurat_object <- subset(x = seurat_object, subset = AnnotatedClusters %in%  my_order)
 
 sce_object <- as.SingleCellExperiment(seurat_object)
-saveRDS(sce_object, file = "Seurat_processed/Meiosis_sce.rds")
+saveRDS(sce_object, file = "../E-MTAB-6946_10x/Processed/Meiosis_sce.rds")
 
 
