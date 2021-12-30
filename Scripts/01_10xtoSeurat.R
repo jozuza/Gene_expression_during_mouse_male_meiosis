@@ -1,10 +1,14 @@
+#R script created on November, 5th, 2021
+# This script takes the 10x data and save as a seurat object
+# Set the working dir as you Script dir
+
+#Load libraries
 library(Matrix)
 library(Seurat)
 library(tidyverse)
 library(R.utils)
 
-#setwd("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x")
-data_dir <- "Raw/prep_10x/"
+data_dir <- "../E-MTAB-6946_10x/Raw/prep_10x/"
 list.files(data_dir) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 
 
