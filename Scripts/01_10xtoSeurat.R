@@ -10,7 +10,13 @@ library(R.utils)
 
 data_dir <- "../E-MTAB-6946_10x/Raw/prep_10x/"
 list.files(data_dir) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
-
+#rename files
+file.rename(paste0(matrix_dir, "cell_metadata.txt"),
+            paste0(matrix_dir, "barcodes.tsv.gz"))
+file.rename(paste0(matrix_dir, "genes.tsv"), 
+            paste0(matrix_dir, "features.tsv.gz"))
+file.rename(paste0(matrix_dir, "raw_counts.mtx"),
+            paste0(matrix_dir, "matrix.mtx.gz"))
 
 matrix_dir = data_dir
 barcode.path <- paste0(matrix_dir, "barcodes.tsv.gz")
