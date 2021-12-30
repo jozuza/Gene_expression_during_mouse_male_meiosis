@@ -39,8 +39,17 @@ print("converting")
 seurat_object = CreateSeuratObject(counts = mat)
 seurat_object@meta.data$Barcode = rownames(seurat_object[[]])
 
+#rename files as original
+file.rename(paste0(matrix_dir, "barcodes.tsv.gz"),
+            paste0(matrix_dir, "cell_metadata.txt"))
+file.rename(paste0(matrix_dir, "features.tsv.gz"), 
+            paste0(matrix_dir, "genes.tsv"))
+file.rename(paste0(matrix_dir, "matrix.mtx.gz"),
+            paste0(matrix_dir, "raw_counts.mtx"))
+
 # add metadata
-cell_metadata <- read.csv("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x/Raw/cell_metadata.txt", sep="")
+cell_metadata <- read.csv(paste0(matrix_dir, "cell_metadata.txt"), sep="")
+
 table(cell_metadata$Sample)
 ToFilter = c("P10", "P15", "P20", "P25", "P30", "P35", "P5")
 cell_metadata_red <- cell_metadata %>% filter(Sample %in% ToFilter)
