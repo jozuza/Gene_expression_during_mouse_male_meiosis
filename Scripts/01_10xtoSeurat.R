@@ -1,6 +1,6 @@
 #R script created on November, 5th, 2021
 # This script takes the 10x data and save as a seurat object
-# Set the working dir as you Script dir
+# Work from your 'Script' dir
 
 #Load libraries
 library(Matrix)
