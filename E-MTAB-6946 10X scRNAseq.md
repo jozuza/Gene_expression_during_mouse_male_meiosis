@@ -14,7 +14,6 @@
 
 
 Meiosis: P10, 15, 20 
-![2e22835beae60a6001e515b8f4c2381f.png](../_resources/2e22835beae60a6001e515b8f4c2381f.png)
 ```
 #scRNA-Seq (X) or bulk RNA-Seq (B)
 ```
@@ -28,7 +27,6 @@ Meiosis: P10, 15, 20
 
 ---
 ## Data 
-~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x
 ```
 |── Raw
 │   ├── cell_metadata.txt
