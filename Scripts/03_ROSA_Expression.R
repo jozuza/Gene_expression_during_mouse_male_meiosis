@@ -1,20 +1,18 @@
 #R script created on November, 5th, 2021
-# This script takes the single cell object created on the previous step and produces plots for some genes
+# This script takes the single cell and seurat object created on the previous step and produces plots for some marker genes defined in the original paper and the ROSA 26 locus
 # Work from your 'Script' dir
 
+#Load libraries
 library(tidyverse)
-# library(SingleCellExperiment)
 library(useful)
 library(cowplot)
 library(ggpubr)
 library(scater)
 
-setwd("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x")
-
 options(stringsAsFactors = FALSE)
 
 ## 1. Load Single cell experiment object ---------------------------------------
-sce_object <- readRDS("Seurat_processed/Meiosis_sce.rds")
+sce_object <- readRDS("../E-MTAB-6946_10x/Processed/Meiosis_sce.rds")
 
 ## 2. Gene expression level per cell type --------------------------------------
 ## 2.1. Organize
