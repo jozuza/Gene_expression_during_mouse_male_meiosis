@@ -1,3 +1,7 @@
+#R script created on November, 5th, 2021
+# This script takes the single cell object created on the previous step and produces plots for some genes
+# Work from your 'Script' dir
+
 library(tidyverse)
 # library(SingleCellExperiment)
 library(useful)
