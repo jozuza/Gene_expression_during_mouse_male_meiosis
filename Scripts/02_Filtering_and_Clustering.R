@@ -1,3 +1,8 @@
+#R script created on November, 5th, 2021
+# This script takes the 10x data and save as a seurat object
+# Work from your 'Script' dir
+
+#Load libraries
 library(Seurat)
 library(tidyverse)
 
@@ -5,14 +10,13 @@ suppressMessages(require(useful))
 suppressMessages(require(scater))
 suppressMessages(require(dplyr))
 suppressMessages(require(cowplot))
-# suppressMessages(require(SingleCellExperiment))
-setwd("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x")
+#TODO: delte it setwd("~/Documents/Joost_Lab_2021/ROSA26_meiosis_expression/E-MTAB-6946_10x")
 
 options(stringsAsFactors = FALSE)
 
 ## 1. Load Seurat object -------------------------------------------------------
-seurat_object <- readRDS("Raw/prep_10x/SeuratObj_red")
-#It is already filtered as in the paper
+seurat_object <- readRDS("../E-MTAB-6946_10x/Raw/prep_10x/SeuratObj_red")
+#It is already filtered as in the original paper
 summary(seurat_object@meta.data$nFeature_RNA)
 
 #reduce for meiosis stages P10, 15, 20
@@ -27,13 +31,9 @@ seurat_object <- NormalizeData(seurat_object, normalization.method = "LogNormali
 # 4. Higly variable genes ------------------------------------------------------
 seurat_object <- FindVariableFeatures(seurat_object, selection.method = "vst", nfeatures = 2000)
 
-# seurat_object <- readRDS("Raw/prep_10x/Temp_SeuratObj")
 # 5. Scaling the data and removing unwanted sources of variation----------------
-# The results of this are stored in umi[["RNA"]]@scale.data
 all.genes <- rownames(seurat_object)
 seurat_object <- ScaleData(seurat_object, features = all.genes)
-
-#saveRDS(seurat_object, file = "Raw/prep_10x/Temp_SeuratObj.rds")
 
 #Run PCA
 seurat_object <- RunPCA(seurat_object, pc.genes = seurat_object@var.genes, npcs = 40, verbose = F) 
@@ -102,9 +102,10 @@ seurat_object <- seurat_object %>%
     FindClusters(resolution = c(0.4, 0.6, 0.8, 1.0, 1.4)) %>% 
     identity()
 
-
+#Save seurat object
 saveRDS(seurat_object, file = "Seurat_processed/Meiosis_SeuratObj.rds")
 
+#Save expression as a single cell object
 my_order = c("Spermatogonia", "eP1", "eP2", "mP", "lP1", "lP2", "D", "MI", "MII", "S1", "S2", "Fetal_Leydig_1", "Fetal_Leydig_2", "Leydig_1", "Leydig_2", "Sertoli", "Endothelial_cells", "PTM", "Interstitial_tMg")
 #remove outliers, S3 and S4
 
