@@ -14,7 +14,7 @@
 
 
 Meiosis: P10, 15, 20 
-![2e22835beae60a6001e515b8f4c2381f.png](../_resources/2e22835beae60a6001e515b8f4c2381f.png)
+![2e22835beae60a6001e515b8f4c2381f.png](_resources/2e22835beae60a6001e515b8f4c2381f.png)
 ```
 #scRNA-Seq (X) or bulk RNA-Seq (B)
 ```
