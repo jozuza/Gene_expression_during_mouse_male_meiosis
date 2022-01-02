@@ -7,7 +7,7 @@ Datasets:
 [E-MTAB-6946](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6946/) scRNA-Seq: 8 timepoints (P5x2, P10, P15, P25, P30, P35)
 [E-MTAB-6934](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6934/) bulk RNA-Seq: 15 time points (P6, P8, P10, P12, P16, P18, P20, P22, P24, P26, P28, P30, P32 and P34)
 Meiosis: P10, 15, 20 
-![2e22835beae60a6001e515b8f4c2381f.png](../_resources/2e22835beae60a6001e515b8f4c2381f-1.png)
+![2e22835beae60a6001e515b8f4c2381f.png](_resources/2e22835beae60a6001e515b8f4c2381f-1.png)
 ```
 #scRNA-Seq (X) or bulk RNA-Seq (B)
 ```
